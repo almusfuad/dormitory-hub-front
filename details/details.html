@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="../style.css">
+      <title>Details</title>
+</head>
+
+<body>
+      <script src="../core/common.js" defer></script>
+      <header>
+            <script>
+                  fetch('../core/navbar.html')
+                        .then(response => response.text())
+                        .then(data => document.body.insertAdjacentHTML('afterbegin', data));
+            </script>
+      </header>
+
+      <main class="m-4">
+            <div class="details-view">
+                  <div id="details"></div>
+                  <!-- Bootstrap Modal for Booking Form -->
+                  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Booking Form</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                          <form id="bookingForm">
+                                                <!-- Hidden fields for student and dormitory -->
+                                                <input type="hidden" name="student" value="student_id_here">
+                                                <input type="hidden" name="dormitory" value="dormitory_id_here">
+                                            
+                                                <!-- Other fields in the form -->
+                                                <div class="mb-3">
+                                                    <label for="number_of_days" class="form-label">Number of Days:</label>
+                                                    <input type="text" class="form-control" id="number_of_days" name="number_of_days" required>
+                                                </div>
+                                            
+                                                <div class="mb-3">
+                                                    <label for="number_of_months" class="form-label">Number of Months:</label>
+                                                    <input type="text" class="form-control" id="number_of_months" name="number_of_months" required>
+                                                </div>
+                                            
+                                                <div class="mb-3">
+                                                    <label for="number_of_seats" class="form-label">Number of Seats:</label>
+                                                    <input type="text" class="form-control" id="number_of_seats" name="number_of_seats" required>
+                                                </div>
+                                            
+                                                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                                            </form>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div id="reviews">
+                        <div class="d-flex justify-content-between align-items-center">
+                              <h4><strong>Total Reviews: </strong><span id="total-reviews"></span></h4>
+                              <button type="button" class="btn btn-success"
+                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                    Add Review
+                              </button>
+                        </div>
+
+                  </div>
+            </div>
+      </main>
+
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script type="module" src="../core/navbar.js" defer></script>
+      <script type="module" src="./details.js"></script>
+      <script type="module" src="./allReviews.js"></script>
+
+</body>
+
+</html>

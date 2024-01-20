@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>User Profile</title>
+      <link rel="stylesheet" href="./profile.css">
+</head>
+
+<body>
+
+      <script src="../core/common.js" defer></script>
+      <header>
+            <script>
+                  fetch('../core/navbar.html')
+                        .then(response => response.text())
+                        .then(data => document.body.insertAdjacentHTML('afterbegin', data));
+            </script>
+      </header>
+
+      <div class="container-fluid">
+            <div class="d-flex m-auto">
+                  <!-- Profile Management Buttons -->
+                  <div class="d-flex flex-column m-3">
+                        <p><strong>Available balance:</strong><br><span id="balance"></span></p>
+                        <a href="#" class="mb-2" data-bs-toggle="modal" data-bs-target="#transactionModal"
+                              data-transaction-type="deposit">Deposit</a>
+                        <a href="#" class="mb-2" data-bs-toggle="modal" data-bs-target="#transactionModal"
+                              data-transaction-type="withdraw">Withdraw</a>
+                        <a href="#" class="mb-2">Update Profile</a>
+                  </div>
+
+                  <!-- User Information -->
+                  <div class="m-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                              <div>
+                                    <img id="pro-img" src="" alt="" class="img-fluid rounded-circle"
+                                          style="width: 180px; height: 180px;">
+                              </div>
+                              <div class="ms-5" id="profile-info">
+                              </div>
+                        </div>
+                        <div class="mt-3" id="address-info">
+
+                        </div>
+                  </div>
+            </div>
+
+            <!-- Booking History -->
+            <div class="row">
+                  <div class="col-md-12">
+                        <div class="booking-history p-4">
+                              <h2>Booking History</h2>
+                              <table class="table table-bordered">
+                                    <thead>
+                                          <tr>
+                                                <th>Date</th>
+                                                <th>Dormitory Name</th>
+                                                <th>Number of Months</th>
+                                                <th>Number of Seats</th>
+                                                <th>Total Cost</th>
+                                                <th>Status</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <!-- Add rows for booking history -->
+                                          <tr>
+                                                <td>2022-01-01</td>
+                                                <td>Dormitory Name (Replace with actual name)</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>$0</td>
+                                                <td>Checked Out</td>
+                                          </tr>
+
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+            </div>
+
+            <!-- Transaction History -->
+            <div class="row">
+                  <div class="col-md-12">
+                        <div class="transaction-history p-4">
+                              <h2>Transaction History</h2>
+                              <table class="table table-bordered">
+                                    <thead>
+                                          <tr>
+                                                <th>Date</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th>Main Balance</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <!-- Add rows for transaction history -->
+                                          <tr>
+                                                <td>2024-01-16 22:17:10</td>
+                                                <td>Deposit</td>
+                                                <td>$1,500.00</td>
+                                                <td>$7,000.00</td>
+                                          </tr>
+                                          <!-- Add additional rows for more data if needed -->
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+            </div>
+
+
+
+            <!-- Transaction Modal form -->
+            <div class="modal" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="transactionModalLabel">Transaction Form</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        
+                        <form id="transactionForm">
+                          
+                          <div class="mb-3">
+                            <label for="amount" class="form-label">Amount:</label>
+                            <input type="text" class="form-control" id="amount" name="amount" required>
+                          </div>
+                          <input type="hidden" id="transactionType" name="transactionType" value="">
+                          <button onclick="submitTransaction()" type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            <div id="UpdateProfileForm" class="form-popup">
+                  <!-- Update profile form content -->
+                  <!-- Add input fields for updating the profile -->
+                  <button class="btn btn-primary" onclick="closeForm('UpdateProfileForm')">Submit</button>
+            </div>
+
+            <!-- jQuery -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script type="module" src="../core/navbar.js" defer></script>
+            <script type="module" src="./profile.js" defer></script>
+
+</body>
+
+</html>

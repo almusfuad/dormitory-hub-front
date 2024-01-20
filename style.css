@@ -1,0 +1,11 @@
+.dormitory-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.img-details{
+    width:auto;
+    height: 220px;
+    object-fit: cover;
+}

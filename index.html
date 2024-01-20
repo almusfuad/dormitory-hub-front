@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Dormitory-Hub</title>
+<body>
+      <script src="./core/common.js" defer></script>
+      <header>
+            <script>
+                  fetch('./core/navbar.html')
+                  .then(response => response.text())
+                  .then(data => document.body.insertAdjacentHTML('afterbegin', data));
+            </script>
+      </header>
+      
+<!-- main section -->
+<main>
+
+      <div class="row m-auto">
+            <!-- Sorting Div on the Left -->
+            
+                <div id="dormitoryList">
+        
+                </div>
+            </div>
+        </div>
+</main>
+<footer>
+
+</footer>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="module" src="./core/navbar.js" defer></script>
+<script type="module" src="index.js"></script>
+</body>
+</html>
