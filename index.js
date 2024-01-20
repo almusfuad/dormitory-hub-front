@@ -21,7 +21,7 @@ const renderDormitories = (dormitories) => {
             const div = document.createElement('div');
             div.classList.add('dormitory-card');
             div.innerHTML = `
-            <div class="dormitory-card d-flex p-3 border rounded">
+            <div class="dormitory-card d-flex p-3 border rounded mb-2">
             <div class="d-flex me-3">
                   <img class="dormitory-image img-fluid rounded" src="${dormitory?.image}" alt="Dormitory Image">
             </div>

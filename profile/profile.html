@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>User Profile</title>
       <link rel="stylesheet" href="./profile.css">
+      <link rel="stylesheet" href="../transactions/transaction.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             </script>
       </header>
 
-      <div class="container-fluid">
+      <div class="container-fluid p-4">
             <div class="d-flex m-auto">
                   <!-- Profile Management Buttons -->
                   <div class="d-flex flex-column m-3">
@@ -28,7 +29,7 @@
                               data-transaction-type="deposit">Deposit</a>
                         <a href="#" class="mb-2" data-bs-toggle="modal" data-bs-target="#transactionModal"
                               data-transaction-type="withdraw">Withdraw</a>
-                        <a href="./update_profile.html" class="mb-2">Update Profile</a>
+                        <a href="../update/update_profile.html" class="mb-2">Update Profile</a>
                   </div>
 
                   <!-- User Information -->
@@ -94,15 +95,8 @@
                                                 <th>Main Balance</th>
                                           </tr>
                                     </thead>
-                                    <tbody>
-                                          <!-- Add rows for transaction history -->
-                                          <tr>
-                                                <td>2024-01-16 22:17:10</td>
-                                                <td>Deposit</td>
-                                                <td>$1,500.00</td>
-                                                <td>$7,000.00</td>
-                                          </tr>
-                                          <!-- Add additional rows for more data if needed -->
+                                    <tbody id="transactionTableBody">
+
                                     </tbody>
                               </table>
                         </div>
@@ -135,16 +129,11 @@
                   </div>
                 </div>
 
-            <div id="UpdateProfileForm" class="form-popup">
-                  <!-- Update profile form content -->
-                  <!-- Add input fields for updating the profile -->
-                  <button class="btn btn-primary" onclick="closeForm('UpdateProfileForm')">Submit</button>
-            </div>
-
             <!-- jQuery -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script type="module" src="../core/navbar.js" defer></script>
             <script type="module" src="./profile.js" defer></script>
+            <script src="../transactions/transaction.js"></script>
 
 </body>
 
