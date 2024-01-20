@@ -1,10 +1,9 @@
 const getProfileInfo = () => {
       const user_id = localStorage.getItem('user_id');
       console.log(user_id);
+      const token = localStorage.getItem('token');
 
-      fetch(`https://dormitory-hub.onrender.com/user/${user_id}`, {
-            
-      })
+      fetch(`https://dormitory-hub.onrender.com/user/${user_id}`)
       .then((res) => {
       if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`);
@@ -15,29 +14,60 @@ const getProfileInfo = () => {
             const profileInfo = document.getElementById('profile-info');
             const addressInfo = document.getElementById('address-info');
 
-            // render dynamic profile info
-            profileInfo.innerHTML = `
-            <p><strong>Account no:</strong> ${data?.basicinformation?.account_no}</p>
-            <p><strong>Full name:</strong> ${data?.basicinformation?.user?.first_name} ${data?.basicinformation?.user?.last_name}</p>
-            <p><strong>Phone no:</strong> ${data?.basicinformation?.phone_no}</p>
-            <p><strong>Gender:</strong> ${data?.basicinformation?.gender_type}</p>
-            `;
+            localStorage.setItem('info_id', data?.basicinformation?.id);
+            
+            if (data?.basicinformation?.id){
+                  // render dynamic profile info
+                  profileInfo.innerHTML = `
+                  <p><strong>Account no:</strong> ${data?.basicinformation?.account_no}</p>
+                  <p><strong>Full name:</strong> ${data?.basicinformation?.user?.first_name} ${data?.basicinformation?.user?.last_name}</p>
+                  <p><strong>Phone no:</strong> ${data?.basicinformation?.phone_no}</p>
+                  <p><strong>Gender:</strong> ${data?.basicinformation?.gender_type}</p>
+                  `;
+      
+                  // render dynamic address info
+                  addressInfo.innerHTML = `
+                  <p><strong>Address:</strong> ${data?.basicinformation?.street_address}, ${data?.basicinformation?.postal_code}, ${data?.basicinformation?.city}</p>
+                  <p><strong>Institution:</strong> ${data?.basicinformation?.institution_name}<span>(${data?.basicinformation?.institution_type})</span></p>
+                  <p><strong>Institution address:</strong> ${data?.basicinformation?.institution_address}</p>
+                  `;
+      
+                  document.getElementById('pro-img').src = data?.basicinformation?.image;
+                  document.getElementById('balance').innerHTML = data?.basicinformation?.balance;
+            } else {
+                  window.location.href = "./update_profile.html";
+            }
 
-            // render dynamic address info
-            addressInfo.innerHTML = `
-            <p><strong>Address:</strong> ${data?.basicinformation?.street_address}, ${data?.basicinformation?.postal_code}, ${data?.basicinformation?.city}</p>
-            <p><strong>Institution:</strong> ${data?.basicinformation?.institution_name}<span>(${data?.basicinformation?.institution_type})</span></p>
-            <p><strong>Institution address:</strong> ${data?.basicinformation?.institution_address}</p>
-            `;
-
-            document.getElementById('pro-img').src = data?.basicinformation?.image;
-            document.getElementById('balance').innerHTML = data?.basicinformation?.balance;
       })
       .catch((error) => {
             console.error('Fetch error:', error);
       });
       
 };
+
+
+
+window.submitTransaction = () => {
+      const token = localStorage.getItem('token');
+      var transactionType = document.getElementById('transactionType').value;
+      var amount = document.getElementById('amount').value;
+  
+      fetch('https://dormitory-hub.onrender.com/transactions/deposit-withdraw/', {
+          method: "POST",
+          headers: {
+		'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+	},
+          body: JSON.stringify({
+              "transaction_type": transactionType,
+              "amount": amount
+          })
+      })
+      .then((res) => res.json())
+      .then((data) => {
+          console.log(data);
+      });
+  };
 
 const eventListeners = () => {
       const token = localStorage.getItem('token');
@@ -75,31 +105,8 @@ const eventListeners = () => {
           // Reset the form when the modal is hidden
           document.getElementById('transactionForm').reset();
       });
-  };
-  
-  const submitTransaction = () => {
-      const token = localStorage.getItem('token');
-      var transactionType = document.getElementById('transactionType').value;
-      var amount = document.getElementById('amount').value;
-  
-      fetch('https://dormitory-hub.onrender.com/transactions/deposit-withdraw/', {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              'Authorization': `Token ${token}`,
-          },
-          body: JSON.stringify({
-              "transaction_type": transactionType,
-              "amount": amount
-          })
-      })
-      .then((res) => res.json())
-      .then((data) => {
-          console.log(data);
-      });
-  };
-    
+  };  
+eventListeners();
 
-
-  getProfileInfo();
-  eventListeners();
+  
+getProfileInfo();

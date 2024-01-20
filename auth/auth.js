@@ -57,6 +57,7 @@ const login = () => {
             if (data.user_id && data.token) {
                   localStorage.setItem('user_id', data.user_id);
                   localStorage.setItem('token', data.token);
+                  
 
                   // redirect
                   window.location.href = "../index.html";
