@@ -1,0 +1,60 @@
+
+.dormitories-head {
+  font-size: 1.25rem; /* Equivalent to 20px */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff; /* Change to white */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.card {
+  border: none; /* Remove border */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  background-color: rgba(203, 224, 230, 0.368); /* Background color for the card */
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem; /* Equivalent to 20px */
+  margin-bottom: 10px;
+  color: #dddddd; /* Change text color for better readability */
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #dddddd; /* Change text color for better readability */
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #0d6efd; /* Change to Bootstrap's primary color */
+  border-color: #0d6efd; /* Change border color */
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7; /* Darker shade for hover */
+  border-color: #0b5ed7; /* Darker border color for hover */
+}

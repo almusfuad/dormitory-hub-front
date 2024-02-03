@@ -1,0 +1,25 @@
+.banner-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(203, 224, 230, 0.368);
+  margin: 100px; /* Reduced margin */
+  border-radius: 10px;
+  height: 300px; /* Reduced height */
+  padding: 0 40px 0 80px; /* Adjusted padding */
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20px;
+  color: #fff;
+}
+
+.banner-img {
+  top: -20px; /* Adjusted position */
+  height: 340px; /* Reduced height */
+  position: relative;
+  overflow: hidden;
+}
