@@ -10,6 +10,15 @@
   justify-content: center;
 }
 
+#dormitory-container{
+  background-color: rgb(75, 79, 61);
+  margin: 0%;
+  display: flex;
+  justify-content: start;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
 
 
 .card {
@@ -18,7 +27,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
   background-color: rgba(203, 224, 230, 0.368); /* Background color for the card */
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  height: 400px;
+  width: 380px;
+  margin-top: 30px;
 }
 
 .card:hover {
@@ -58,3 +70,7 @@
   background-color: #0b5ed7; /* Darker shade for hover */
   border-color: #0b5ed7; /* Darker border color for hover */
 }
+
+
+
+

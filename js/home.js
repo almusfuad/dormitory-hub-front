@@ -1,6 +1,6 @@
 // Fetch data from the API endpoint
 const allDormitories = () => {
-  fetch('/dormitories/list/')
+  fetch('https://dormitory-hub.onrender.com/dormitories/list/')
 .then((res) => res.json())
 .then((data) => {
   console.log(data);

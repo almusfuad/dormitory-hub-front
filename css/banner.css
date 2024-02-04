@@ -1,12 +1,19 @@
+.banner{
+  display: flex;
+  justify-content: center;
+
+}
 .banner-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;  
   align-items: center;
-  background-color: rgba(203, 224, 230, 0.368);
-  margin: 100px; /* Reduced margin */
+  background-color: rgba(203, 224, 230, 0.368);/* Reduced margin */
   border-radius: 10px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   height: 300px; /* Reduced height */
-  padding: 0 40px 0 80px; /* Adjusted padding */
+  width: 85%;
+  padding-left: 180px;
 }
 
 .banner-text {
