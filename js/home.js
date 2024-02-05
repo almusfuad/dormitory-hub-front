@@ -20,7 +20,7 @@ const allDormitories = () => {
           <h5 class="card-title">${dorm.name}</h5>
           <p class="card-text">Location: ${dorm.location.location}</p>
           <p class="card-text">Address: ${dorm.address}</p>
-          <a class="btn btn-primary btn-lg" role="button" href="dormitory_details.html?${dorm.slug}">Details</a>
+          <a class="btn btn-primary btn-lg" role="button" href="/details/dormitory_details.html?slug=${dorm.slug}">Details</a>
         </div>
       </div>
     `;

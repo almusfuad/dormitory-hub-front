@@ -1,7 +1,12 @@
 const getParams = () => {
       const param = new URLSearchParams(window.location.search).get("slug");
+      console.log(param);
 
-      fetch
+      fetch(`https://dormitory-hub.onrender.com/dormitories/list/?slug=${param}`)
+            .then((res) => res.json())
+            .then((data) => {
+                  console.log(data);
+            })
 }
 
 
@@ -9,7 +14,7 @@ const details = (slug) => {
 
       console.log(slug);
       
-      fetch(`/dormitory/list/?slug=${slug}`)
+      fetch(`https://dormitory-hub.onrender.com/dormitories/list/?slug=${slug}`)
             .then((res) => res.json())
             .then((data) => {
                   console.log(data);
@@ -20,3 +25,5 @@ const details = (slug) => {
                   console.error(err);
             })
 };
+
+getParams();

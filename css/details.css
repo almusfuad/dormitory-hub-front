@@ -1,0 +1,82 @@
+/* Main container */
+.details-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    /* Container for details */
+    #details-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+    }
+    
+    /* Image container */
+    .details-img {
+      flex: 0 0 45%;
+      position: relative;
+    }
+    
+    .details-img img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    
+    /* Button */
+    .details-img button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /* Text container */
+    .details-text {
+      flex: 0 0 50%;
+      padding-left: 20px;
+    }
+    
+    /* Title */
+    .details-text h2 {
+      margin-bottom: 10px;
+    }
+    
+    /* Facilities and type */
+    .facilities-type {
+      margin-bottom: 10px;
+    }
+    
+    /* Costs */
+    .costs {
+      margin-top: 20px;
+    }
+    
+    /* Responsive design */
+    @media screen and (max-width: 768px) {
+      #details-container {
+        flex-direction: column;
+      }
+      
+      .details-img,
+      .details-text {
+        width: 100%;
+        margin: 0;
+      }
+      
+      .details-img button {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+    
