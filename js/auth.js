@@ -1,7 +1,8 @@
 import { showNotification } from "./notifications.js";
 
 
-const login = () => {
+const login = (event) => {
+      event.preventDefault();
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
@@ -39,36 +40,7 @@ const login = () => {
 
 
 
-const logout = () => {
-      console.log(localStorage.getItem('token'));
-      fetch(`https://dormitory-hub.onrender.com/user/logout/`, {
-            method: "GET",
-            headers: {
-                  "Authorization": `Token ${localStorage.getItem('token')}`,
-                  'Content-Type': 'application/json'
-            },
-      })
-      .then((res) => {
-            console.log(res.json());
-            if (res.status === 200) {
-                  localStorage.removeItem('token');
-                  window.location.href = "../auth/login.html";
-                  showNotification("Logged out successful.", 'success');
+const register = () => {
 
-            }
-            else {
-
-                  showNotification("Logged out failed.", 'danger');
-            }
-      })
-      .catch((err) => {
-            console.error('Error:', err);
-      });
-};
-document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById('loginBtn').addEventListener('click', login);
-});
-
-export { logout };
-
+}
 
