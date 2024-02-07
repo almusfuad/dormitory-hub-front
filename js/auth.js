@@ -53,8 +53,17 @@ const register = (event) => {
       const phoneNumber = document.getElementById('phone_no').value;
       const profileImage = document.getElementById('image').files[0];
 
+      const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+      // validate password
       if (password !== confirmPassword) {
             document.getElementById('password-error').innerHTML = 'Password do not match';
+      }
+      else if (!regex.test(password)) {
+            document.getElementById('password-error').innerHTML = 'Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, 1 special character, and be at least 8 characters long';
+      } 
+      else {
+            document.getElementById('password-error').innerHTML = '';
       }
 
       const formData = new FormData();
@@ -66,6 +75,20 @@ const register = (event) => {
       formData.append('phone_no', phoneNumber);
       formData.append('image', profileImage);
 
-      fetch(``)
-}
+      fetch(`https://dormitory-hub.onrender.com/user/register/`)
+      .then((res) => {
+            if(res.ok) {
+                  showNotification('Registration Successful. Check your email for confirm email.');
+                  window.location.href = '/auth/login.html';
+                  return res.json();
+            }
+            else {
+                  showNotification('Registration Failed');
+            }
+      })
+      .catch((err) => {
+            console.log('Registration error:', err);
+      })
+
+};
 
