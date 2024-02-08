@@ -1,8 +1,8 @@
 import { showNotification } from "./notifications.js";
 
 
-const login = (event) => {
-      event.preventDefault();
+const login = () => {
+      console.log('login clicked');
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
@@ -38,10 +38,14 @@ const login = (event) => {
 };
 
 
-
-
-const register = (event) => {
+document.getElementById('loginBtn').addEventListener('click', function(event) {
       event.preventDefault();
+      login();
+  });
+
+
+
+const register = () => {
       
       // retrieve data
       const username = document.getElementById('username').value;
@@ -91,4 +95,6 @@ const register = (event) => {
       })
 
 };
+
+document.getElementById('registerBtn').addEventListener('click', register);
 
