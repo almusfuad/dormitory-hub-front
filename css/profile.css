@@ -1,5 +1,6 @@
 .profile-main{
       /* background-color: rgba(203, 224, 230, 0.368); */
+      /* color: rgb(75, 79, 61); */
       padding: 50px;
       border-radius: 10px;
 }
@@ -34,7 +35,51 @@
 #right-panel{
       height: 400px;
       background-color: rgba(203, 224, 230, 0.368);
-      padding: 20px;
+      padding: 40px;
       border-radius: 10px;
       margin-left: 10px;;
  }
+
+.table {
+      border-radius: 10px;
+}
+
+ /* apply fixed position to the table header */
+ .table thead th {
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: rgb(75, 79, 61);
+ }
+
+ /* allow table body to scroll */
+ .table body {
+      display: block;
+      overflow-y: auto;
+ }
+
+/* hide horizontal scrollbar */
+ .table tbody::-webkit-scrollbar {
+      display: none;
+ }
+
+ .custom-bg-color {
+      background-color: aliceblue; /* Change the color to your desired background color */
+  }
+
+
+#depositButton, #withdrawButton {
+      color: white;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+}
+
+#depositButton:hover, 
+#withdrawButton:hover {
+      color: #888888 !important;
+}

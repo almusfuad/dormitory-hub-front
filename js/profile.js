@@ -40,6 +40,7 @@ const getUserDetails = () => {
                         <h6><strong>Account no: </strong>${data[0]?.account_no}</h6>
                         <p><strong>Balance: </strong>${data[0]?.balance}</p>
                   </div>
+                  <br>
                   <div class="profile-info">
                         <h6><strong>Full name: </strong>${data[0]?.user?.first_name} ${data[0]?.user?.last_name}</h6>
                         <h6><strong>Email: </strong>${data[0]?.user?.email}</h6>
@@ -55,7 +56,7 @@ const getUserDetails = () => {
                                     <th>Amount</th>
                                     </tr>
                               </thead>
-                              <tbody>
+                              <tbody class="custom-bg-color">
                                     <!-- Transaction rows will be dynamically added here -->
                               </tbody>
                         </table>
@@ -81,35 +82,47 @@ const getUserDetails = () => {
 };
 
 
-// const deposit = () => {
-//       const depositAmount = document.getElementById('depositAmount').value;
-//       const url = `https://dormitory-hub.onrender.com/user/deposit/`;
-//       const token = localStorage.getItem('token');
-//       fetch(url, {
-//             method: 'POST',
-//             headers: {
-//                   'Authorization': `Token ${token}`,
-//                   'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify({
-//                   'amount': depositAmount,
-//             })
-//       })
-//       .then((res) => res.json())
-//       .then((data) => {
-//             console.log(data);
-//             if(data.status === 'success') {
-//                   showNotification('Deposit successful.', 'success');
-//                   $('#depositModal').modal('hide');
-//                   getUserDetails();
-//             }
-//             else {
-//                   showNotification('Deposit failed.', 'danger');
-//             }
-//       })
-//       .catch((err) => {
-//             console.error(err);
-//       });
-// }
+const getAllTransaction = () => {
+      const token = localStorage.getItem('token');
+      const url = `https://dormitory-hub.onrender.com/transactions/all/`;
+      fetch(url, {
+            method: 'GET',
+            headers: {
+                  'Authorization': `Token ${token}`,
+                  'Content-Type': 'application/json',
+            }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+            console.log(data);
 
+            // sort transactions by timestamp in descending order
+            data.sort((a, b) => {
+                  return new Date(b.timestamp) - new Date(a.timestamp);
+            });
+
+            const tbody = document.querySelector('.transaction-info tbody');
+            tbody.innerHTML = '';
+
+            data.forEach((transaction) => {
+                  // convert timestamp to date string
+                  const date = new Date(transaction?.timestamp);
+                  const dateString = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+
+
+                  const row = document.createElement('tr');
+                  row.innerHTML = `
+                  <td>${dateString}</td>
+                  <td>${transaction?.transaction_type}</td>
+                  <td>${transaction?.amount}</td>
+                  `;
+                  tbody.appendChild(row);
+            })
+      })
+      .catch((err) => {
+            console.error(err);
+      });
+};
+
+getAllTransaction();
 getUserDetails();
