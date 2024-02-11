@@ -28,7 +28,7 @@ const getUserDetails = () => {
 
                   </div>
                   <div class="user-management d-flex flex-column">
-                        <p class="text-white-50 pb-0 mb-0">User management:</p>
+                        <p class="text-white-50 pb-0 mb-0">User:</p>
                         <a href="">Edit Profile</a>
                         <a href="">Change Password</a>
                         <a href="">Logout</a>
@@ -45,8 +45,9 @@ const getUserDetails = () => {
                         <h6><strong>Email: </strong>${data[0]?.user?.email}</h6>
                         <h6><strong>Phone-no: </strong>${data[0]?.phone_no}</h6>
                   </div>
-                  <div class="transaction-info">
-                        <table>
+                  <br>
+                  <div class="transaction-info table-responsive table-striped-columns">
+                        <table class="table">
                               <thead>
                                     <tr>
                                     <th>Transaction Date</th>
@@ -80,35 +81,35 @@ const getUserDetails = () => {
 };
 
 
-const deposit = () => {
-      const depositAmount = document.getElementById('depositAmount').value;
-      const url = `https://dormitory-hub.onrender.com/user/deposit/`;
-      const token = localStorage.getItem('token');
-      fetch(url, {
-            method: 'POST',
-            headers: {
-                  'Authorization': `Token ${token}`,
-                  'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                  'amount': depositAmount,
-            })
-      })
-      .then((res) => res.json())
-      .then((data) => {
-            console.log(data);
-            if(data.status === 'success') {
-                  showNotification('Deposit successful.', 'success');
-                  $('#depositModal').modal('hide');
-                  getUserDetails();
-            }
-            else {
-                  showNotification('Deposit failed.', 'danger');
-            }
-      })
-      .catch((err) => {
-            console.error(err);
-      });
-}
+// const deposit = () => {
+//       const depositAmount = document.getElementById('depositAmount').value;
+//       const url = `https://dormitory-hub.onrender.com/user/deposit/`;
+//       const token = localStorage.getItem('token');
+//       fetch(url, {
+//             method: 'POST',
+//             headers: {
+//                   'Authorization': `Token ${token}`,
+//                   'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                   'amount': depositAmount,
+//             })
+//       })
+//       .then((res) => res.json())
+//       .then((data) => {
+//             console.log(data);
+//             if(data.status === 'success') {
+//                   showNotification('Deposit successful.', 'success');
+//                   $('#depositModal').modal('hide');
+//                   getUserDetails();
+//             }
+//             else {
+//                   showNotification('Deposit failed.', 'danger');
+//             }
+//       })
+//       .catch((err) => {
+//             console.error(err);
+//       });
+// }
 
 getUserDetails();

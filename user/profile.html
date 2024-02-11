@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto" style="font-size: 16px;">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="/index.html">Home</a>
             </li>
             <li class="nav-item" id="profileLink">
               <a class="nav-link" href="/user/profile.html">Profile</a>
@@ -51,7 +51,7 @@
 <div class="profile-main d-flex justify-content-center align-items-center mx-5 my-5">
   <div id="left-panel" class="d-flex flex-column col-2 ms-5">
   </div>
-  <div id="right-panel" class="col-8 px-5 d-flex flex-column justify-content-center align-content-center">
+  <div id="right-panel" class="col-8 px-5 d-flex flex-column justify-content-start align-content-center">
     
   </div>
 </div>
@@ -68,14 +68,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="depositForm" method="POST">
-            <div class="form-group">
-                <label for="depositAmount">Deposit Amount:</label>
-                <input type="number" class="form-control" id="depositAmount" name="depositAmount" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+        <div class="form-group">
+            <label for="depositAmount">Deposit Amount:</label>
+            <input type="number" class="form-control" id="depositAmount" name="depositAmount" required>
+        </div>
+        <br>
+        <button type="button" id="depositButton" class="btn btn-primary">Submit</button>
+    </div>
     </div>
   </div>
 </div>
@@ -91,8 +90,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- Withdraw form can be added here -->
-        <!-- For simplicity, I'm leaving this part empty -->
+          <div class="form-group">
+            <label for="withdrawAmount">Withdraw Amount:</label>
+            <input type="number" class="form-control" id="withdrawAmount" name="withdrawAmount" required>
+          </div>
+          <br>
+          <button type="submit" id="withdrawButton" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
@@ -149,6 +152,7 @@
 <script type="module" src="/js/notifications.js"></script>
 <script type="module" src="/js/navbar.js"></script>
 <script src="/js/profile.js"></script>
+<script type="module" src="/js/transactions.js"></script>
 <script>
       // Add event listener for close buttons on both modals
       document.querySelectorAll('.modal .close').forEach(closeButton => {

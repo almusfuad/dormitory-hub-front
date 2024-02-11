@@ -4,6 +4,7 @@
       border-radius: 10px;
 }
  #left-panel{
+      height: 400px;
       background-color: rgb(75, 79, 61);
       padding: 20px;
       border-radius: 10px;
@@ -31,8 +32,9 @@
 }
 
 #right-panel{
+      height: 400px;
       background-color: rgba(203, 224, 230, 0.368);
       padding: 20px;
       border-radius: 10px;
-      margin-left: 10px;
+      margin-left: 10px;;
  }
