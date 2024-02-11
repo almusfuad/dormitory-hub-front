@@ -1,0 +1,38 @@
+.profile-main{
+      /* background-color: rgba(203, 224, 230, 0.368); */
+      padding: 50px;
+      border-radius: 10px;
+}
+ #left-panel{
+      background-color: rgb(75, 79, 61);
+      padding: 20px;
+      border-radius: 10px;
+ }
+
+#profile-img{
+      display: block;
+      margin: 0 auto;
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      
+}
+
+#transaction{
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+
+}
+
+.user-management{
+      margin-top: 10px;
+}
+
+#right-panel{
+      background-color: rgba(203, 224, 230, 0.368);
+      padding: 20px;
+      border-radius: 10px;
+      margin-left: 10px;
+ }

@@ -26,7 +26,7 @@ const login = () => {
             const token = data?.token;
             if (token) {
                   localStorage.setItem('token', token);
-                  window.location.href = '../index.html';
+                  window.location.href = '/index.html';
                   showNotification("Logged in successful.", 'success');
             } else {
                   showNotification("Logged in failed.", 'danger');
@@ -36,13 +36,6 @@ const login = () => {
             console.error('Error:', err);
       })
 };
-
-
-document.getElementById('loginBtn').addEventListener('click', function(event) {
-      event.preventDefault();
-      login();
-  });
-
 
 
 const register = () => {
@@ -96,5 +89,21 @@ const register = () => {
 
 };
 
-document.getElementById('registerBtn').addEventListener('click', register);
+document.addEventListener('DOMContentLoaded', function() {
+      const loginBtn = document.getElementById('loginBtn');
+      if (loginBtn) {
+          loginBtn.addEventListener('click', function(event) {
+              event.preventDefault();
+              login();
+          });
+      }
+  
+      const registerBtn = document.getElementById('registerBtn');
+      if (registerBtn) {
+          registerBtn.addEventListener('click', function(event) {
+              event.preventDefault();
+              register();
+          });
+      }
+  });
 

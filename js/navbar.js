@@ -22,7 +22,7 @@ const logout = () => {
     fetch(`https://dormitory-hub.onrender.com/user/logout/`, {
           method: "GET",
           headers: {
-                "Authorization": `Bearer ${localStorage.getItem('token')}`,
+                "Authorization": `Token ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
           },
     })
