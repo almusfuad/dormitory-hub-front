@@ -1,3 +1,5 @@
+import { showNotification } from './notifications.js';
+
 const getParams = () => {
       const param = new URLSearchParams(window.location.search).get("slug");
       console.log(param);
@@ -10,6 +12,7 @@ const getParams = () => {
             .then((data) => {
                   console.log(data);
                   showDetails(data);
+                  checkBookingPermission(param);
                   
             })
             .catch((err) => {
@@ -24,7 +27,7 @@ const showDetails = (data) => {
                   dormitoryDetails.innerHTML = `
                   <div class="col-5 details-img">
                         <img src="${data[0]?.image}" alt="Dormitory Image">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookNowModal">
+                        <button type="button" id="booking-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookNowModal">
                               Book Now
                         </button>
                   </div>
@@ -45,8 +48,102 @@ const showDetails = (data) => {
                   const bookingForm = document.getElementById('bookingForm');
                   bookingForm.addEventListener('submit', (event) => {
                         event.preventDefault();
+                        $('#bookNowModal').modal('hide');
+                        const dormitoryId = data[0]?.id;
+                        createBooking(dormitoryId);
                   });
+
+
+
 };
+
+
+const checkBookingPermission = (dormitorySlug) => {
+      const url = `https://dormitory-hub.onrender.com/booking/permission/${dormitorySlug}/`;
+      const token = localStorage.getItem("token");
+      const bookingButton = document.getElementById("booking-button");
+      
+      console.log("Token: ", token);
+
+      if(token === null) {
+            bookingButton.disabled = true;
+            return;
+      }
+
+            fetch(url, {
+                  method: "GET",
+                  headers: {
+                        "Authorization": `Token ${token}`,
+                  }
+            })
+            .then((res) => {
+                  if (!res.ok) {
+                        throw new Error("Failed to fetch booking permission");
+                    }
+                  return res.json();
+            })
+            .then((data) => {
+                  console.log("Booking permission:", data);
+      
+                  if(data.booking_exists){
+                        bookingButton.disabled = true;
+                  }
+                  else{
+                        bookingButton.disabled = false;
+                  }
+
+            })
+            .catch((error) => {
+                  console.log("Error checking booking permission:", error);
+                  bookingButton.disabled = true;
+            });
+      
+
+};
+
+const createBooking = (dormitoryId) => {
+      console.log("Creating booking...");
+      const url = `https://dormitory-hub.onrender.com/booking/create/`;
+      const token = localStorage.getItem("token");
+
+      const number_of_days = document.getElementById("number_of_days").value;
+      const number_of_months = document.getElementById("number_of_months").value;
+      const number_of_seats = document.getElementById("number_of_seats").value;
+
+      const formData = {
+            dormitory: dormitoryId,
+            number_of_days: number_of_days,
+            number_of_months: number_of_months,
+            number_of_seats: number_of_seats,
+      }
+
+      fetch(url, {
+            method: 'POST',
+            headers: {
+                  'Content-Type': 'application/json',
+                  "Authorization": `Token ${token}`
+            },
+            body: JSON.stringify(formData)
+      })
+      .then((res) => {
+            if (!res.ok) {
+                  showNotification("Booking created failed", 'error');
+                  throw new Error("Failed to create booking.");
+            }
+            else
+            {
+                  showNotification("Booking created successfully", 'success');
+            
+            }
+            return res.json();
+      })
+      .then(data => {
+            console.log("Booking created successfully", data);
+      })
+      .catch(error => {
+            console.error("Error creating booking:",error);
+      });
+}
 
 
 getParams();
