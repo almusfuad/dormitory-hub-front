@@ -80,6 +80,53 @@
       }
     }
     
-.review-container{
-  background-color: rgba(203, 224, 230, 0.368);
+/* Container for all reviews */
+.reviews-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Individual review container */
+.review-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Info section with reviewer name and image */
+.info-section {
+  margin-bottom: 10px;
+}
+
+.info-section img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Reviewer name */
+.info-section h6 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Stars rating */
+.stars {
+  margin-bottom: 10px;
+}
+
+/* Review details textarea */
+textarea {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Adjust textarea height */
+textarea {
+  resize: vertical; /* Allow vertical resizing */
 }
